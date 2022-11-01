@@ -5,25 +5,27 @@ import { ContactListItem } from './ContactListItem';
 export const ContactList = ({ contactList, onDeletePhonebookID }) => {
   // console.log
   return (
-    <ul className={css.contactsList}>
-      {contactList.map(el => {
-        return (
-          <ContactListItem
-            key={el.id}
-            element={el}
-            onDeletePhonebookID={onDeletePhonebookID}
-          >
-            <button
-              type="button"
-              className={css.button}
-              onClick={() => onDeletePhonebookID(el.id)}
+    contactList.length > 0 && (
+      <ul className={css.contactsList}>
+        {contactList.map(el => {
+          return (
+            <ContactListItem
+              key={el.id}
+              element={el}
+              onDeletePhonebookID={onDeletePhonebookID}
             >
-              Delete
-            </button>
-          </ContactListItem>
-        );
-      })}
-    </ul>
+              <button
+                type="button"
+                className={css.button}
+                onClick={() => onDeletePhonebookID(el.id)}
+              >
+                Delete
+              </button>
+            </ContactListItem>
+          );
+        })}
+      </ul>
+    )
   );
 };
 
